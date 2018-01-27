@@ -37,6 +37,11 @@
     <sprite>sprites\sprAsteroid1</sprite>
     <sprite>sprites\sprAsteroid2</sprite>
     <sprite>sprites\sprAsteroid3</sprite>
+    <sprites name="menu">
+      <sprite>sprites\spr_buttons</sprite>
+      <sprite>sprites\spr_pointer</sprite>
+      <sprite>sprites\spr_title</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -61,9 +66,16 @@
       <object>objects\objScenaryParent</object>
       <object>objects\objStar</object>
     </objects>
+    <objects name="Menu">
+      <object>objects\objMenuControl</object>
+      <object>objects\obj_pointer</object>
+      <object>objects\obj_button</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_menu</room>
     <room>rooms\room0</room>
+    <room>rooms\rm_credits</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
