@@ -96,7 +96,7 @@ if keyboard_check(vk_left) {
     x += 8
 }
 
-x = clamp(x, 60, room_width-60)
+x = clamp(x, 55, room_width-55)
 
 // Switch wave order
 if ds_list_size(waves) &gt; 0 {

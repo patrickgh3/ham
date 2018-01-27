@@ -122,9 +122,10 @@ dead = false
             <string>if not joining and not dead {
     // Collide with space junk
     
-    var c = collision_circle(x, y+headOffset, 10, objObstParent, true, false)
+    var c = collision_circle(x, y-headOffset, 10, objObstParent, true, false)
     if c != noone {
         dead = true
+        audio_stop_sound(sound)
         
         with c {
             instance_destroy()

@@ -37,6 +37,10 @@
     <sprite>sprites\sprAsteroid1</sprite>
     <sprite>sprites\sprAsteroid2</sprite>
     <sprite>sprites\sprAsteroid3</sprite>
+    <sprite>sprites\sprEarth</sprite>
+    <sprite>sprites\sprSexyPig</sprite>
+    <sprite>sprites\sprRadioTower</sprite>
+    <sprite>sprites\sprSatellite</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -45,6 +49,7 @@
     <script>scripts\scr_spawnWave.gml</script>
     <script>scripts\scr_spawnScenary.gml</script>
     <script>scripts\scr_addToScore.gml</script>
+    <script>scripts\scr_sineInterp.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objWave</object>
@@ -61,6 +66,10 @@
       <object>objects\objScenaryParent</object>
       <object>objects\objStar</object>
     </objects>
+    <object>objects\objBackgroundColorFade</object>
+    <object>objects\objEarth</object>
+    <object>objects\objPig</object>
+    <object>objects\objRadioTower</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

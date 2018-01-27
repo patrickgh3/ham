@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//Alarm zero is the start time for generation
-alarm[0]=60; 
+alarm[0]=200; 
 
 //non important 
 y=0;

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,17 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,objSpawner);
-t = 0 // step counter, increments by 1 every step
-roundScore=0 // round score counter. 
+            <string>skyColor = 16758364
 
-global.isAlive=true; 
+skyHue = colour_get_hue(skyColor)
+skySat = colour_get_saturation(skyColor)
+skyVal = colour_get_value(skyColor)
+
+background_color = c_black
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -52,50 +54,19 @@ global.isAlive=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>t++
+            <string>var fadeTop = -1500
+var fadeBottom = 200
 
-if t == 1 {
-    audio_play_sound(choose(sndSignalLaunch, sndSignalLaunch2), 0.5, false)
+// Draw gradient if on-screen
+if (view_yview[0] + view_hview[0] &gt; fadeTop) {
+    draw_rectangle_colour(0, fadeTop, room_width, fadeBottom, c_black, c_black, skyColor, skyColor, false)
 }
 
-if t == 120 {
-    instance_create(objRadioTower.x, objRadioTower.y, objPlayer)
+// Draw solid sky color if on-screen
+if (view_yview[0] + view_hview[0] &gt; fadeBottom) {
+    draw_set_color(skyColor)
+    draw_rectangle(0, fadeBottom, room_width, view_yview[0] + view_hview[0] + 1, false)
 }
-
-if t == 150 {
-    instance_create(0, 0, objCamera)
-}
-
-// temp restart game
-if keyboard_check_pressed(ord('R')) {
-    room_goto(room)
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_set_colour(c_white); 
-draw_set_valign(fa_middle);
-draw_set_halign(fa_center);
-draw_text(356, 64, roundScore); 
 </string>
           </argument>
         </arguments>
