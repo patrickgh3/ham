@@ -5,13 +5,26 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sndBass</sound>
-    <sound>sound\sndDrums</sound>
-    <sound>sound\sndGuitar</sound>
-    <sound>sound\sndVocals</sound>
-    <sound>sound\sndDrumsAlternative</sound>
-    <sound>sound\sndGuitarAlternative</sound>
-    <sound>sound\sndVocalsAlternative</sound>
+    <sounds name="music tracks">
+      <sound>sound\sndBass</sound>
+      <sound>sound\sndDrums</sound>
+      <sound>sound\sndGuitar</sound>
+      <sound>sound\sndVocals</sound>
+      <sound>sound\sndDrumsAlternative</sound>
+      <sound>sound\sndGuitarAlternative</sound>
+      <sound>sound\sndVocalsAlternative</sound>
+    </sounds>
+    <sounds name="sfx">
+      <sound>sound\sndExplosion</sound>
+      <sound>sound\sndExplosion2</sound>
+      <sound>sound\snd1up</sound>
+      <sound>sound\sndSpace</sound>
+      <sound>sound\sndGameOverSqueal</sound>
+      <sound>sound\sndPressAnyKey</sound>
+      <sound>sound\sndSignalLaunch</sound>
+      <sound>sound\sndSignalLaunch2</sound>
+    </sounds>
+    <sound>sound\sndTitleScreen</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprTempJunk</sprite>
@@ -21,6 +34,9 @@
     <sprite>sprites\sprTempObstacle</sprite>
     <sprite>sprites\sprTempObstacleTwo</sprite>
     <sprite>sprites\sprTempCD</sprite>
+    <sprite>sprites\sprAsteroid1</sprite>
+    <sprite>sprites\sprAsteroid2</sprite>
+    <sprite>sprites\sprAsteroid3</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

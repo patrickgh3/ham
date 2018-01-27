@@ -2,7 +2,7 @@
 <sound>
   <kind>0</kind>
   <extension>.wav</extension>
-  <origname>sound\audio\sndGuitar.wav</origname>
+  <origname>sound\audio\snd1up.wav</origname>
   <effects>0</effects>
   <volume>
     <volume>1</volume>
@@ -15,13 +15,13 @@
     <sampleRate>44100</sampleRate>
   </sampleRates>
   <types>
-    <type>1</type>
+    <type>0</type>
   </types>
   <bitDepths>
     <bitDepth>16</bitDepth>
   </bitDepths>
   <preload>-1</preload>
-  <data>sndGuitar.wav</data>
+  <data>snd1up.wav</data>
   <compressed>0</compressed>
   <streamed>0</streamed>
   <uncompressOnLoad>0</uncompressOnLoad>

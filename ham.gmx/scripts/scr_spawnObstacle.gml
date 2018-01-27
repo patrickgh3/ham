@@ -19,8 +19,10 @@ case(1):
   break; 
   } 
 }  
-  newObst.myHSpeed=setHSpeed; 
-  newObst.myVSpeed=setVSpeed; 
-  newObst.myColor=setColor; 
-  newObst.image_xscale=sizeAugment; 
-  newObst.image_yscale=sizeAugment; 
+newObst.myHSpeed=setHSpeed; 
+newObst.myVSpeed=setVSpeed; 
+newObst.myColor=setColor; 
+newObst.image_xscale=sizeAugment; 
+newObst.image_yscale=sizeAugment; 
+newObst.sprite_index = choose(sprAsteroid1, sprAsteroid2, sprAsteroid3)
+newObst.image_speed = 0
