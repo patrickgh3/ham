@@ -25,6 +25,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_spawnObstacle.gml</script>
+    <script>scripts\scr_spawnScenary.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objWave</object>
@@ -36,6 +37,11 @@
     <object>objects\objObstacleOne</object>
     <object>objects\objObstacleTwo</object>
     <object>objects\objControlTemp</object>
+    <objects name="Scenary">
+      <object>objects\objScenaryParent</object>
+      <object>objects\objStar</object>
+    </objects>
+    <object>objects\object9</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
