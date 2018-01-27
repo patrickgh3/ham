@@ -15,6 +15,9 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_spawnObstacle.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\objWave</object>
     <object>objects\objPlayer</object>

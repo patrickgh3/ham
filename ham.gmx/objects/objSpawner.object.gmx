@@ -33,7 +33,7 @@ y=0;
 x=0; 
 
 //y spawn init 
-ySpawn=0;  
+xSpawn=0;  
 
 //iterationCounters 
 twoSecCount=0; 
@@ -60,7 +60,20 @@ twoSecCount=0;
           <argument>
             <kind>1</kind>
             <string>xSpawn=irandom_range(60,room_width-60);  
-instance_create(xSpawn,ySpawn,objObstacleTwo); 
+colorNum=choose(0,1,2,3); 
+if (xSpawn&lt;room_width/2)
+{
+speedHtoSet=1;
+}
+else
+{
+speedHtoSet=-1;
+} 
+
+speedVtoSet=4;  
+
+scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn); 
+
 alarm[2]=20; 
 </string>
           </argument>
@@ -91,9 +104,13 @@ alarm[2]=20;
 //implement reading an array of planned events 
 
 xSpawn=irandom_range(60,room_width-60);  
-instance_create(xSpawn,ySpawn,objObstacleOne); 
-alarm[1]=120; 
+colorNum=choose(0,1,2,3); 
+speedHtoSet=0;
+speedVtoSet=4;  
 
+scr_spawnObstacle(0,colorNum,speedHtoSet,speedVtoSet, xSpawn); 
+
+alarm[1]=120;  
 </string>
           </argument>
         </arguments>
