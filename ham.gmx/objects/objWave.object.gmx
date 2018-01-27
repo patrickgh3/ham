@@ -25,7 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>color = c_aqua
+            <string>enum TRACK {
+    BASS,
+    DRUMS,
+    GUITAR,
+    VOCALS,
+}
+
+type = TRACK.BASS // type of track - bass, drums, guitar, or vocals.
+color = c_aqua
 headOffset = 20
 sound = -1
 
@@ -36,6 +44,9 @@ for (var i=0; i&lt;recentLength; i++) {
     yRecent[i] = y
 }
 recentI = 0
+
+// whether we're in the process of joining the group (from a powerup)
+joining = false
 </string>
           </argument>
         </arguments>
@@ -66,6 +77,29 @@ recentI = 0
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>joining = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -83,24 +117,56 @@ recentI = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var c = collision_circle(x, y+headOffset, 10, objObstParent, true, false)
-if c != noone {
-    //vspeed = -3
-    //hspeed = 4
-    instance_destroy()
+            <string>if not joining {
+    // Collide with space junk
     
-    with c {
+    var c = collision_circle(x, y+headOffset, 10, objObstParent, true, false)
+    if c != noone {
+        //vspeed = -3
+        //hspeed = 4
         instance_destroy()
+        
+        with c {
+            instance_destroy()
+        }
+        
+        // Remove the wave from the waves list
+        with objPlayer {
+            var i = ds_list_find_index(waves, other.id)
+            ds_list_delete(waves, i)
+            
+            ds_list_add(tracksLost, other.type)
+            
+            // Losing the last wave
+            if ds_list_size(waves) == 0 {
+                //instance_destroy()
+            }
+        }
     }
     
-    // Remove the wave from the waves list
-    with objPlayer {
-        var i = ds_list_find_index(waves, other.id)
-        ds_list_delete(waves, i)
+    // Collide with new instrument
+    
+    var c = collision_circle(x, y+headOffset, 10, objPickup, true, false)
+    if c != noone {
+        with c {
+            instance_destroy()
+        }
         
-        // Losing the last wave
-        if ds_list_size(waves) == 0 {
-            //instance_destroy()
+        if ds_list_size(objPlayer.tracksLost) &gt; 0 {
+            var type = objPlayer.tracksLost[|0]
+            ds_list_delete(objPlayer.tracksLost, 0)
+        
+            var w = scr_spawnWave(
+                    choose(-30, room_width+30),
+                    view_yview[0]+view_hview[0]-100,
+                    type);
+            
+            w.joining = true
+            w.alarm[0] = 40
+            
+            with objPlayer {
+                ds_list_add(waves, w)
+            }
         }
     }
 }

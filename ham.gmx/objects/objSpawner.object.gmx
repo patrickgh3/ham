@@ -37,6 +37,8 @@ xSpawn=0;
 
 //iterationCounters 
 twoSecCount=0; 
+
+randomize()
 </string>
           </argument>
         </arguments>

@@ -27,25 +27,43 @@
             <kind>1</kind>
             <string>waves = ds_list_create()
 
-var w = instance_create(x, y, objWave);
-w.color = c_aqua
-w.sound = audio_play_sound(sndBass, 1, true)
+var w = scr_spawnWave(x, y, TRACK.BASS)
 ds_list_add(waves, w)
 
-var w = instance_create(x, y, objWave);
-w.color = c_red
-w.sound = audio_play_sound(sndDrums, 1, true)
+var w = scr_spawnWave(x, y, TRACK.DRUMS)
 ds_list_add(waves, w)
 
-var w = instance_create(x, y, objWave);
-w.color = c_lime
-w.sound = audio_play_sound(sndGuitar, 1, true)
+var w = scr_spawnWave(x, y, TRACK.GUITAR)
 ds_list_add(waves, w)
 
-var w = instance_create(x, y, objWave);
-w.color = c_orange
-w.sound = audio_play_sound(sndVocals, 1, true)
+var w = scr_spawnWave(x, y, TRACK.VOCALS)
 ds_list_add(waves, w)
+
+// List of tracks we lost in the order we lost them
+tracksLost = ds_list_create()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ds_list_destroy(tracksLost)
 </string>
           </argument>
         </arguments>
@@ -92,19 +110,45 @@ if ds_list_size(waves) &gt; 0 {
 // Move waves to their position relative to me.
 
 var n = ds_list_size(waves)
+//show_debug_message(n)
 for (var i=0; i&lt;n; i++) {
     var angle = 90 + i/n*360
     var r = 23
     
     var xTarget = x+lengthdir_x(r, angle)
     var yTarget = y+lengthdir_y(r, angle)
-    
     //var xTarget = x + 30*(i-(n-1)/2);
     
     var w = waves[|i];
+    var snap = 0.2
+    if w.joining snap = 0.1
+    
+    w.x += (xTarget-w.x)*snap
     w.y += (yTarget-w.y)*0.2
-    w.x += (xTarget-w.x)*0.2
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy()
 </string>
           </argument>
         </arguments>

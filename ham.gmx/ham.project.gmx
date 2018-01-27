@@ -20,11 +20,13 @@
     </sprites>
     <sprite>sprites\sprTempObstacle</sprite>
     <sprite>sprites\sprTempObstacleTwo</sprite>
+    <sprite>sprites\sprTempCD</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_spawnObstacle.gml</script>
+    <script>scripts\scr_spawnWave.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objWave</object>
@@ -36,6 +38,7 @@
     <object>objects\objObstacleOne</object>
     <object>objects\objObstacleTwo</object>
     <object>objects\objControlTemp</object>
+    <object>objects\objPickup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

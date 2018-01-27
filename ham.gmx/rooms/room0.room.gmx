@@ -63,6 +63,9 @@
     <instance objName="objTempJunk" x="96" y="-32" name="inst_0D8E4D23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTempJunk" x="0" y="448" name="inst_18DE36B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTempJunk" x="352" y="608" name="inst_B316132A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPickup" x="288" y="-352" name="inst_C6562D18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPickup" x="288" y="384" name="inst_CCF9066C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPickup" x="320" y="-1696" name="inst_B779C051" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
