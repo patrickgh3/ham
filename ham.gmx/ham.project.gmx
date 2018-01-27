@@ -10,6 +10,8 @@
     <sprites name="editor">
       <sprite>sprites\sprite1</sprite>
     </sprites>
+    <sprite>sprites\sprTempObstacle</sprite>
+    <sprite>sprites\sprTempObstacleTwo</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -17,6 +19,11 @@
     <object>objects\objWave</object>
     <object>objects\objCamera</object>
     <object>objects\objTempJunk</object>
+    <object>objects\objSpawner</object>
+    <object>objects\objObstParent</object>
+    <object>objects\objObstacleOne</object>
+    <object>objects\objObstacleTwo</object>
+    <object>objects\objControlTemp</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
