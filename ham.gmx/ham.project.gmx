@@ -5,9 +5,19 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprTempJunk</sprite>
+    <sprites name="editor">
+      <sprite>sprites\sprite1</sprite>
+    </sprites>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\objWave</object>
+    <object>objects\objCamera</object>
+    <object>objects\objTempJunk</object>
+  </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
