@@ -27,6 +27,8 @@
   <scripts name="scripts">
     <script>scripts\scr_spawnObstacle.gml</script>
     <script>scripts\scr_spawnWave.gml</script>
+    <script>scripts\scr_spawnScenary.gml</script>
+    <script>scripts\scr_addToScore.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objWave</object>
@@ -39,6 +41,10 @@
     <object>objects\objObstacleTwo</object>
     <object>objects\objControlTemp</object>
     <object>objects\objPickup</object>
+    <objects name="Scenary">
+      <object>objects\objScenaryParent</object>
+      <object>objects\objStar</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
