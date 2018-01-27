@@ -50,6 +50,11 @@ t = 0 // step counter, increments by 1 every step
           <argument>
             <kind>1</kind>
             <string>t++
+
+// temp restart game
+if keyboard_check_pressed(ord('R')) {
+    room_goto(room)
+}
 </string>
           </argument>
         </arguments>

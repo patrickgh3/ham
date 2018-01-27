@@ -28,6 +28,14 @@
             <string>color = c_aqua
 headOffset = 20
 sound = -1
+
+// Record recent x positions
+recentLength = 100
+for (var i=0; i&lt;recentLength; i++) {
+    xRecent[i] = x
+    yRecent[i] = y
+}
+recentI = 0
 </string>
           </argument>
         </arguments>
@@ -75,7 +83,7 @@ sound = -1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var c = collision_circle(x, y+headOffset, 20, objObstParent, true, false)
+            <string>var c = collision_circle(x, y+headOffset, 10, objObstParent, true, false)
 if c != noone {
     //vspeed = -3
     //hspeed = 4
@@ -89,8 +97,20 @@ if c != noone {
     with objPlayer {
         var i = ds_list_find_index(waves, other.id)
         ds_list_delete(waves, i)
+        
+        // Losing the last wave
+        if ds_list_size(waves) == 0 {
+            //instance_destroy()
+        }
     }
 }
+
+// Record recent x positions
+
+recentI = (recentI+1) mod recentLength
+
+xRecent[recentI] = x
+yRecent[recentI] = y
 </string>
           </argument>
         </arguments>
@@ -147,14 +167,19 @@ draw_circle(x, y-headOffset, 10, false)
 var xx = x
 var yy = y
 
-for (var i=0; i&lt;100; i++) {
+for (var i=0; i&lt;recentLength; i++) {
     var xx_last = xx;
     var yy_last = yy;
     
-    var ii = i + (y/3);
-    xx = x + 6*sin(ii/20*pi*2) + 4*sin(ii/9*pi*2+pi/2)
+    var ri = (recentI - i);
+    if ri &lt; 0 ri += recentLength
     
-    yy += 3
+    var waveformI = objControlTemp.t - i
+    xx = xRecent[ri] + 6*sin(waveformI/15*pi*2) + 4*sin(waveformI/8*pi*2+pi/2)
+    yy = yRecent[ri]
+    
+    //var ii = yy;
+    //xx = 6*sin(ii/40*pi*2) + 4*sin(ii/17*pi*2+pi/2)
     
     if i != 0 {
         draw_line_width(xx_last, yy_last, xx, yy, 3)

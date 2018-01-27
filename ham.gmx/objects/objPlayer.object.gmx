@@ -80,25 +80,29 @@ if keyboard_check(vk_left) {
 
 x = clamp(x, 60, room_width-60)
 
-// temp restart game
-if keyboard_check_pressed(ord('R')) {
-    room_goto(room)
-}
-
 // Switch wave order
-if (keyboard_check_pressed(vk_space)) {
-    var w = waves[|0]
-    ds_list_delete(waves, 0)
-    ds_list_add(waves, w)
+if ds_list_size(waves) &gt; 0 {
+    if (keyboard_check_pressed(vk_space)) {
+        var w = waves[|0]
+        ds_list_delete(waves, 0)
+        ds_list_add(waves, w)
+    }
 }
 
 // Move waves to their position relative to me.
 
 var n = ds_list_size(waves)
 for (var i=0; i&lt;n; i++) {
+    var angle = 90 + i/n*360
+    var r = 23
+    
+    var xTarget = x+lengthdir_x(r, angle)
+    var yTarget = y+lengthdir_y(r, angle)
+    
+    //var xTarget = x + 30*(i-(n-1)/2);
+    
     var w = waves[|i];
-    w.y = y
-    var xTarget = x + 30*(i-(n-1)/2);
+    w.y += (yTarget-w.y)*0.2
     w.x += (xTarget-w.x)*0.2
 }
 </string>
