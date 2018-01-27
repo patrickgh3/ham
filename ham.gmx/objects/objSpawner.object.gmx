@@ -70,9 +70,9 @@ else
 speedHtoSet=-1;
 } 
 
-speedVtoSet=4;  
+speedVtoSet=1;  
 
-scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn); 
+scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn,1); 
 
 alarm[2]=20; 
 </string>
@@ -106,9 +106,9 @@ alarm[2]=20;
 xSpawn=irandom_range(60,room_width-60);  
 colorNum=choose(0,1,2,3); 
 speedHtoSet=0;
-speedVtoSet=4;  
+speedVtoSet=1;  
 
-scr_spawnObstacle(0,colorNum,speedHtoSet,speedVtoSet, xSpawn); 
+scr_spawnObstacle(0,colorNum,speedHtoSet,speedVtoSet, xSpawn,3); 
 
 alarm[1]=120;  
 </string>
