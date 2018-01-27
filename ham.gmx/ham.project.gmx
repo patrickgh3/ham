@@ -15,6 +15,7 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\objWave</object>
+    <object>objects\objPlayer</object>
     <object>objects\objCamera</object>
     <object>objects\objTempJunk</object>
   </objects>

@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>// Follow the player
-if instance_exists(objWave) {
-    var w = instance_find(objWave, 0)
+if instance_exists(objPlayer) {
+    var w = instance_find(objPlayer, 0)
     view_xview = w.x-300
 }
 </string>
