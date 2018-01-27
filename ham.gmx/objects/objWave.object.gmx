@@ -149,7 +149,7 @@ dead = false
     
     // Collide with new instrument
     
-    var c = collision_circle(x, y+headOffset, 10, objPickup, true, false)
+    var c = collision_circle(x, y-headOffset, 10, objPickup, true, false)
     if c != noone {
         with c {
             instance_destroy()
