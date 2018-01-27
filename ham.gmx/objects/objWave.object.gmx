@@ -53,12 +53,18 @@
             <string>hspeed = 5
 
 if keyboard_check(vk_down) {
-    y += 5
+    y += 8
 } else if keyboard_check(vk_up) {
-    y -= 5
+    y -= 8
 }
 
 y = clamp(y, 50, room_height-50)
+
+
+// temp restart
+if keyboard_check_pressed(ord('R')) {
+    room_goto(room)
+}
 </string>
           </argument>
         </arguments>
@@ -82,8 +88,27 @@ y = clamp(y, 50, room_height-50)
           <argument>
             <kind>1</kind>
             <string>// temp square
+//draw_set_color(color)
+//draw_rectangle(x-3, y-3, x+3, y+3, false)
+
+
+// draw waveform
 draw_set_color(color)
-draw_rectangle(x-3, y-3, x+3, y+3, false)
+
+var xx = x
+var yy = y
+for (var i=0; i&lt;100; i++) {
+    var xx_last = xx;
+    var yy_last = yy;
+    xx -= 3
+    
+    var ii = i - (x/3);
+    yy = y + 6*sin(ii/20*pi*2) + 4*sin(ii/9*pi*2+pi/2)
+    
+    if i != 0 {
+        draw_line_width(xx_last, yy_last, xx, yy, 3)
+    }
+}
 </string>
           </argument>
         </arguments>

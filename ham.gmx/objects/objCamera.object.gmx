@@ -28,7 +28,7 @@
             <string>// Follow the player
 if instance_exists(objWave) {
     var w = instance_find(objWave, 0)
-    view_xview = w.x-200
+    view_xview = w.x-300
 }
 </string>
           </argument>
