@@ -29,8 +29,8 @@
 colorNum=choose(0,1,2,3); 
 image_speed=0;
 image_index=colorNum;  
-myHSpeed=-4;
-myVSpeed=0; 
+myHSpeed=0;
+myVSpeed=4; 
 
 hspeed=myHSpeed; 
 vspeed=myVSpeed;  

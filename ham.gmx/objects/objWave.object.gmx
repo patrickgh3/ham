@@ -52,7 +52,7 @@
 draw_set_color(color)
 
 var headOffset = 20
-draw_circle(x+headOffset, y, 10, false)
+draw_circle(x, y-headOffset, 10, false)
 
 
 // Draw waveform
@@ -64,10 +64,10 @@ for (var i=0; i&lt;100; i++) {
     var xx_last = xx;
     var yy_last = yy;
     
-    xx -= 3
+    var ii = i + (y/3);
+    xx = x + 6*sin(ii/20*pi*2) + 4*sin(ii/9*pi*2+pi/2)
     
-    var ii = i - (x/3);
-    yy = y + 6*sin(ii/20*pi*2) + 4*sin(ii/9*pi*2+pi/2)
+    yy += 3
     
     if i != 0 {
         draw_line_width(xx_last, yy_last, xx, yy, 3)

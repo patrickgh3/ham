@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>// Follow the player
 if instance_exists(objPlayer) {
-    var w = instance_find(objPlayer, 0)
-    view_xview = w.x-300
+    var w = instance_find(objPlayer, 0);
+    view_yview[0] = w.y - view_hview[0] + 300
 }
 </string>
           </argument>

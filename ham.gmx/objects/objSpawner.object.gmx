@@ -32,8 +32,8 @@ alarm[0]=60;
 y=0;
 x=0; 
 
-//x spawn init 
-xSpawn=0;  
+//y spawn init 
+ySpawn=0;  
 
 //iterationCounters 
 twoSecCount=0; 
@@ -59,7 +59,7 @@ twoSecCount=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ySpawn=irandom_range(20,room_height-60);  
+            <string>xSpawn=irandom_range(60,room_width-60);  
 instance_create(xSpawn,ySpawn,objObstacleTwo); 
 alarm[2]=20; 
 </string>
@@ -90,7 +90,7 @@ alarm[2]=20;
 //TODO
 //implement reading an array of planned events 
 
-ySpawn=irandom_range(20,room_height-60);  
+xSpawn=irandom_range(60,room_width-60);  
 instance_create(xSpawn,ySpawn,objObstacleOne); 
 alarm[1]=120; 
 
@@ -158,7 +158,7 @@ alarm[7]=720;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xSpawn=view_xview[0]+view_wview[0];
+            <string>ySpawn=view_yview[0];
 
  
 </string>

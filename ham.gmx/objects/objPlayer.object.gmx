@@ -61,16 +61,16 @@ ds_list_add(waves, w)
           <argument>
             <kind>1</kind>
             <string>// Move onwards
-x += 5
+y -= 5
 
 // Player moves up and down.
-if keyboard_check(vk_down) {
-    y += 8
-} else if keyboard_check(vk_up) {
-    y -= 8
+if keyboard_check(vk_left) {
+    x -= 8
+} else if keyboard_check(vk_right) {
+    x += 8
 }
 
-y = clamp(y, 70, room_height-70)
+x = clamp(x, 60, room_width-60)
 
 // temp restart game
 if keyboard_check_pressed(ord('R')) {
@@ -89,9 +89,9 @@ if (keyboard_check_pressed(vk_space)) {
 var n = ds_list_size(waves)
 for (var i=0; i&lt;n; i++) {
     var w = waves[|i];
-    w.x = x
-    var yTarget = y + 30*(i-(n-1)/2);
-    w.y += (yTarget-w.y)*0.2
+    w.y = y
+    var xTarget = x + 30*(i-(n-1)/2);
+    w.x += (xTarget-w.x)*0.2
 }
 </string>
           </argument>
