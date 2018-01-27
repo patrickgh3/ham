@@ -4,7 +4,15 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndBass</sound>
+    <sound>sound\sndDrums</sound>
+    <sound>sound\sndGuitar</sound>
+    <sound>sound\sndVocals</sound>
+    <sound>sound\sndDrumsAlternative</sound>
+    <sound>sound\sndGuitarAlternative</sound>
+    <sound>sound\sndVocalsAlternative</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprTempJunk</sprite>
     <sprites name="editor">

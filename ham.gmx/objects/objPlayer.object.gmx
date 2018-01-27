@@ -29,14 +29,22 @@
 
 var w = instance_create(x, y, objWave);
 w.color = c_aqua
+w.sound = audio_play_sound(sndBass, 1, true)
 ds_list_add(waves, w)
 
 var w = instance_create(x, y, objWave);
 w.color = c_red
+w.sound = audio_play_sound(sndDrums, 1, true)
 ds_list_add(waves, w)
 
 var w = instance_create(x, y, objWave);
 w.color = c_lime
+w.sound = audio_play_sound(sndGuitar, 1, true)
+ds_list_add(waves, w)
+
+var w = instance_create(x, y, objWave);
+w.color = c_orange
+w.sound = audio_play_sound(sndVocals, 1, true)
 ds_list_add(waves, w)
 </string>
           </argument>
