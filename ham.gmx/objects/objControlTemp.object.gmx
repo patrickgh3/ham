@@ -30,6 +30,8 @@ t = 0 // step counter, increments by 1 every step
 roundScore=0 // round score counter. 
 
 god = false
+
+showEndScore = false
 </string>
           </argument>
         </arguments>
@@ -80,7 +82,7 @@ if instance_exists(objPlayer) and objPlayer.state != 2 {
     
     // Ending
     
-    var endTime = 4000 // 6000
+    var endTime = 4000 // 4000
     
     if t == endTime {
         objSpawner.disabled = true
@@ -89,18 +91,18 @@ if instance_exists(objPlayer) and objPlayer.state != 2 {
     if t == endTime+160 {
         objPlayer.state = 1
         
-        instance_create(room_width/2+80, view_yview[0] - 1000, objAlienRadioTower)
+        instance_create(room_width/2+80, view_yview[0] - 400, objAlienRadioTower)
         
-        var m = instance_create(0, view_yview[0] - 1500, objMoon);
+        var m = instance_create(0, view_yview[0] - 900, objMoon);
         m.image_yscale = -1
         
-        var a = instance_create(150, view_yview[0] - 1300, objAlien);
+        var a = instance_create(150, view_yview[0] - 700, objAlien);
         a.image_angle = 180
     }
 
     // God intermission
     
-    var godTime = 2000 // 3000
+    var godTime = 2000 // 2000
     
     if t == godTime-30 {
         objSpawner.disabled = true
@@ -147,15 +149,38 @@ if instance_exists(objPlayer) and objPlayer.state != 2 {
 }
 
 // temp restart game
-if keyboard_check_pressed(ord('R')) {
-    audio_stop_sound(sndSpace)
+/*if keyboard_check_pressed(ord('R')) {
+    
     room_goto(room)
-}
+}*/
 
 // temp exit game
-if keyboard_check_pressed(vk_escape) {
+/*if keyboard_check_pressed(vk_escape) {
     game_end()
-}
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>audio_stop_sound(sndSpace)
 </string>
           </argument>
         </arguments>
@@ -182,14 +207,32 @@ if keyboard_check_pressed(vk_escape) {
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 draw_set_font(fontScore)
+
+// dead
+if instance_exists(objPlayer) and ds_list_size(objPlayer.waves) == 0 {
+    draw_text( view_wview[0]/2, view_hview[0]/2,
+            "Score: " + string(roundScore));
+// end of the game
+} else if showEndScore {
+    draw_text( view_wview[0]/2, view_hview[0]/3,
+            "Score: " + string(roundScore));
+
+// normal alive    
+} else {
+    draw_text(view_wview[0]/2, view_hview[0]*0.1, roundScore); 
+}
+
+/*
+// alive
 if(instance_exists(objPlayer) &amp;&amp;objPlayer.hasDied=false)
 {
-
-draw_text(view_wview[0]/2, 64, roundScore); 
+draw_text(view_wview[0]/2, view_hview[0]*0.1, roundScore); 
 }
+
+// dead
 else if (instance_exists(objPlayer))
 {
-draw_text(view_wview[0]/2,330, "Score: " + string(roundScore)); 
+draw_text(view_wview[0]/2,view_hview[0]/2, "Score: " + string(roundScore)); 
 }
 </string>
           </argument>

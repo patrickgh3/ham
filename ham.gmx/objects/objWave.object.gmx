@@ -165,8 +165,7 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
                 audio_play_sound(sndGameOverSqueal, 0.5, false)
                 //instance_destroy()
                 objPlayer.state = 2
-                var s = audio_play_sound(sndSpace, 1, false)
-                audio_sound_gain(s, 1, 1500)
+                objPlayer.alarm[0] = 60 // play space sound
             }
         }
     }

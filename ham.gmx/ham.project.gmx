@@ -69,6 +69,7 @@
     <sprite>sprites\sprAsteroidColor2</sprite>
     <sprite>sprites\sprMoon2</sprite>
     <sprite>sprites\spr__restart</sprite>
+    <sprite>sprites\sprEndingRestart</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_menu</background>

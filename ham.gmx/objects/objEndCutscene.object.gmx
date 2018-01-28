@@ -52,7 +52,7 @@
 
 if t == 1 {
     objAlien.sprite_index = sprAlienSurprised
-    with instance_create(objAlien.x-25, objAlien.y+200, objExclamation) {
+    with instance_create(objAlien.x+25, objAlien.y+170, objExclamation) {
         image_angle = 180
         image_xscale = 0.5
         image_yscale = image_xscale
@@ -74,11 +74,37 @@ if t == thrustStartT {
 }
 
 if t &gt;= thrustStartT {
+    var goRight = floor(objAlien.landings/4) mod 2 == 0
+    
     if floor(t/thrustSpeed) mod 2 == 0 {
+        objAlien.image_xscale = -1
+        if goRight {
+            objAlien.image_xscale = 1
+        }
         objAlien.sprite_index = sprAlienPreThrust
+
     } else {
-        objAlien.sprite_index = sprAlienThrust
+        with objAlien {
+            if sprite_index == sprAlienPreThrust {
+                hspeed = -2
+                if goRight {
+                    hspeed *= -1
+                }
+                
+                vspeed = 2
+                gravity = -0.4
+            }
+            sprite_index = sprAlienThrust
+        }
     }
+}
+
+if t == 390 {
+    objControlTemp.showEndScore = true
+    var r = instance_create(room_width-1, view_yview[0]+view_hview[0]-1, obj_restart);
+    r.move = false
+    r.sprite_index = sprEndingRestart
+    r.image_angle = 180
 }
 </string>
           </argument>

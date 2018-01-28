@@ -32,12 +32,17 @@ p = 0
 
 disabled = true
 
-gap = choose(3, 4, 5);
-
 num1upsInARow = 0
 
 lastColor = -1
 
+lastJunk = -1
+
+gaps = ds_list_create()
+ds_list_add(gaps, 3, 4, 5)
+gapIndex = 0
+
+gap = gaps[|0]
 
 
 
@@ -338,7 +343,13 @@ alarm[4]=8;
         p ++
         if (p == gap) {
             p = 0
-            gap = choose(3, 4, 5)
+            
+            gapIndex++
+            if gapIndex == 3 {
+                gapIndex = 0
+                ds_list_shuffle(gaps)
+            }
+            gap = gaps[|gapIndex]
             
             toSpawn = 'not_chosen'
             
@@ -372,6 +383,11 @@ alarm[4]=8;
                 vspeed = random_range(0.75, 1.25)
                 
                 var cc = choose(1, 2, 3)
+                if cc = objSpawner.lastJunk {
+                    cc = (cc+choose(1, 2)) mod 3
+                }
+                objSpawner.lastJunk = cc
+                
                 if cc == 1 {
                     sprite_index = sprSatellite
                     image_xscale = 0.5

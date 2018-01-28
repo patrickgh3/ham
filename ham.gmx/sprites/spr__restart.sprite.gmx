@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>576</width>
-  <height>1024</height>
+  <height>500</height>
   <frames>
     <frame index="0">images\spr__restart_0.png</frame>
   </frames>
