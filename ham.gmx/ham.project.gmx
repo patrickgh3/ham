@@ -44,6 +44,8 @@
     <sprites name="menu">
       <sprite>sprites\spr_pointer</sprite>
     </sprites>
+    <sprite>sprites\sprCloud</sprite>
+    <sprite>sprites\sprMichelangeloGod</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -78,6 +80,8 @@
     <objects name="Menu">
       <object>objects\objMenuControl</object>
     </objects>
+    <object>objects\objGod</object>
+    <object>objects\objGodCloud</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
