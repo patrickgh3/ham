@@ -70,7 +70,7 @@ if t == 150 {
 
 // Ending
 
-var endTime = 500
+var endTime = 500000
 
 if t == endTime {
     objSpawner.disabled = true
