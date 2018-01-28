@@ -64,13 +64,13 @@ if t == 120 {
     instance_create(objRadioTower.x, objRadioTower.y, objPlayer)
 }
 
-if t == 150 {
+if t == 130 {
     instance_create(0, 0, objCamera)
 }
 
 // Ending
 
-var endTime = 500000
+var endTime = 6000 // 6000
 
 if t == endTime {
     objSpawner.disabled = true
@@ -90,7 +90,7 @@ if t == endTime+180 {
 
 // God intermission
 
-var godTime = 20000000
+var godTime = 3000 // 3000
 
 if t == godTime {
     objSpawner.disabled = true
@@ -102,6 +102,11 @@ if t == godTime+200 {
 
 if t == godTime-20 {
     instance_create(room_width, view_yview[0]-500, objGod)
+    
+    with instance_create(room_width/2-50, view_yview[0]-550, objHalfway) {
+        image_xscale = 2
+        image_yscale = image_xscale
+    }
     
     // Spawn clouds
     var n = 50
@@ -163,7 +168,8 @@ if keyboard_check_pressed(vk_escape) {
             <string>draw_set_colour(c_white); 
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
-draw_text(356, 64, roundScore); 
+draw_set_font(fontScore)
+draw_text(room_width/2, 64, roundScore); 
 </string>
           </argument>
         </arguments>

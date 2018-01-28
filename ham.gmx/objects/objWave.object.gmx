@@ -129,7 +129,24 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
         dead = true
         audio_stop_sound(sound)
         
+        //if types match {
+        //    var s = instance_create(x, y, objPlusScore);
+        //    s.text = "+50"
+        //    s.vspeed = -2
+        //    objControlTemp.roundScore += 50;
+        //}
+        
         with c {
+            instance_create(x, y, objExplosion)
+            repeat 4 {
+                var p = instance_create(x, y, objFx);
+                with p {
+                    direction = random(360)
+                    speed = random(6)
+                    image_xscale = 3*choose(1,-1)
+                    image_yscale = image_xscale*choose(1,-1)
+                }
+            }
             instance_destroy()
         }
         
@@ -144,6 +161,7 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
             
             // Losing the last wave
             if ds_list_size(waves) == 0 {
+                audio_play_sound(sndGameOverSqueal, 0.5, false)
                 //instance_destroy()
             }
         }
@@ -156,6 +174,8 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
         with c {
             instance_destroy()
         }
+        
+        audio_play_sound(snd1up, 0.5, false)
         
         if ds_list_size(objPlayer.tracksLost) &gt; 0 {
             var type = objPlayer.tracksLost[|0]
@@ -286,7 +306,7 @@ for (var i=0; i&lt;recentLength; i++) {
     //var ii = yy;
     //xx = 6*sin(ii/40*pi*2) + 4*sin(ii/17*pi*2+pi/2)
     
-    if i != 0 {//and not (dead and i &gt;= deadT) and yy &gt; yy_last {
+    if i != 0 and yy != yy_last {//and not (dead and i &gt;= deadT) and yy &gt; yy_last {
         draw_line_width(xx_last, yy_last, xx, yy, 3)
     }
 }

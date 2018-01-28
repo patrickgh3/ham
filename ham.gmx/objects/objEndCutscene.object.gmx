@@ -52,18 +52,33 @@
 
 if t == 1 {
     objAlien.sprite_index = sprAlienSurprised
+    with instance_create(objAlien.x, objAlien.y+200, objExclamation) {
+        image_angle = 180
+        image_xscale = 0.5
+        image_yscale = image_xscale
+    }
 }
 
-if t &gt; 50 {
-    view_angle[0] -= 1
+if t &gt; 80 {
+    view_angle[0] -= 1.5
     if view_angle[0] &lt;= -180 {
         view_angle[0] = -180
     }
 }
 
-// dance
-if t == 200 {
-    
+var thrustStartT = 230
+var thrustSpeed = 20
+
+if t == thrustStartT {
+    with objExclamation instance_destroy()
+}
+
+if t &gt;= thrustStartT {
+    if floor(t/thrustSpeed) mod 2 == 0 {
+        objAlien.sprite_index = sprAlienPreThrust
+    } else {
+        objAlien.sprite_index = sprAlienThrust
+    }
 }
 </string>
           </argument>

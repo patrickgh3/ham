@@ -110,7 +110,7 @@ image_index=myColor;
 {
 if (global.isAlive==true)
 {
-scr_addToScore(2);
+    objControlTemp.roundScore += 1; 
 }
 instance_destroy(); 
 }

@@ -48,13 +48,22 @@
     </sprites>
     <sprite>sprites\sprCloud</sprite>
     <sprite>sprites\sprMichelangeloGod</sprite>
+    <sprite>sprites\sprMoon</sprite>
     <sprite>sprites\sprAlienSitting</sprite>
     <sprite>sprites\sprAlienSurprised</sprite>
+    <sprite>sprites\sprAlienPreThrust</sprite>
+    <sprite>sprites\sprAlienThrust</sprite>
+    <sprite>sprites\sprExclamation</sprite>
     <sprite>sprites\spr1up</sprite>
     <sprite>sprites\sprHAMRadio</sprite>
     <sprite>sprites\sprDJTable</sprite>
     <sprite>sprites\sprBirds</sprite>
-    <sprite>sprites\sprMoon</sprite>
+    <sprite>sprites\sprExplosion</sprite>
+    <sprite>sprites\sprPoof</sprite>
+    <sprite>sprites\sprHalfway</sprite>
+    <sprite>sprites\sprSpaceship</sprite>
+    <sprite>sprites\sprTowerElectricity</sprite>
+    <sprite>sprites\sprPigBlink</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -64,9 +73,11 @@
     <script>scripts\scr_spawnObstacle.gml</script>
     <script>scripts\scr_spawnWave.gml</script>
     <script>scripts\scr_spawnScenary.gml</script>
-    <script>scripts\scr_addToScore.gml</script>
     <script>scripts\scr_sineInterp.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fontScore</font>
+  </fonts>
   <objects name="objects">
     <object>objects\objWave</object>
     <object>objects\objPlayer</object>
@@ -74,9 +85,10 @@
     <object>objects\objTempJunk</object>
     <object>objects\objSpawner</object>
     <object>objects\objObstParent</object>
-    <object>objects\objObstacleOne</object>
-    <object>objects\objObstacleTwo</object>
+    <object>objects\objAsteroid</object>
+    <object>objects\objSpaceJunk</object>
     <object>objects\objControlTemp</object>
+    <object>objects\objEndCutscene</object>
     <object>objects\objPickup</object>
     <objects name="Scenary">
       <object>objects\objScenaryParent</object>
@@ -88,7 +100,6 @@
     <object>objects\objRadioTower</object>
     <objects name="Menu">
       <object>objects\objMenuControl</object>
-      <object>objects\obj_pointer</object>
       <object>objects\obj_button</object>
     </objects>
     <object>objects\objGod</object>
@@ -98,7 +109,12 @@
     <object>objects\objDJTable</object>
     <object>objects\objMoon</object>
     <object>objects\objAlien</object>
-    <object>objects\objEndCutscene</object>
+    <object>objects\objPlusScore</object>
+    <object>objects\objExplosion</object>
+    <object>objects\objFx</object>
+    <object>objects\objExclamation</object>
+    <object>objects\objHalfway</object>
+    <object>objects\objTowerElectricity</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
