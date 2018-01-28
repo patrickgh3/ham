@@ -25,7 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Alarm zero is the start time for generation
+            <string>/*randomize()
+
+t = 0
+
+disabled = true*/
+
+
+
+
+//Alarm zero is the start time for generation
 alarm[0]=260; 
 
 //non important 
@@ -71,7 +80,7 @@ and ds_list_size(objPlayer.waves) != 4 {
     instance_create(random_range(100, room_width-100), view_yview[0] - 30, objPickup)
 }
 
-alarm[5] = 120
+alarm[5] = 200
 </string>
           </argument>
         </arguments>
@@ -185,7 +194,7 @@ if not disabled {
     //scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn,3); 
 }
 
-alarm[2]=150;
+alarm[2]=200;
 </string>
           </argument>
         </arguments>
@@ -218,7 +227,7 @@ alarm[2]=150;
 
 if not disabled {
     xSpawn=irandom_range(20,room_width-20);
-    var speedHtoSet=0;
+    var speedHtoSet=choose(1, -1);
     var speedVtoSet=1;  
     
     with instance_create(xSpawn, view_yview[0]-32, objSpaceJunk) {
@@ -242,7 +251,7 @@ if not disabled {
     //scr_spawnObstacle(0,colorNum,speedHtoSet,speedVtoSet, xSpawn,1); 
 }
 
-alarm[1]=60;  
+alarm[1]=40;  
 </string>
           </argument>
         </arguments>
@@ -307,9 +316,19 @@ alarm[7]=720;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ySpawn=view_yview[0];
+            <string>/*if not disabled {
+    t++
+    
+    var playerNeeds1ups = instance_exists(objPlayer)
+            and objPlayer.state == 0
+            and ds_list_size(objPlayer.waves) &lt; 4
+    
+    
+}*/
 
- 
+ySpawn=view_yview[0];
+
+
 </string>
           </argument>
         </arguments>

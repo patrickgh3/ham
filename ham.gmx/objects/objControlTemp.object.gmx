@@ -66,6 +66,10 @@ if t == 130 {
     instance_create(0, 0, objCamera)
 }
 
+if t == 250 {
+    objSpawner.disabled = false
+}
+
 if instance_exists(objPlayer) and objPlayer.state != 2 {
 
     // Add score based on time
@@ -81,7 +85,7 @@ if instance_exists(objPlayer) and objPlayer.state != 2 {
         objSpawner.disabled = true
     }
     
-    if t == endTime+80 {
+    if t == endTime+160 {
         objPlayer.state = 1
         
         instance_create(room_width/2+80, view_yview[0] - 1000, objAlienRadioTower)

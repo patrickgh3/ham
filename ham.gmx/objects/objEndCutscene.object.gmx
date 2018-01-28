@@ -52,7 +52,7 @@
 
 if t == 1 {
     objAlien.sprite_index = sprAlienSurprised
-    with instance_create(objAlien.x, objAlien.y+200, objExclamation) {
+    with instance_create(objAlien.x-25, objAlien.y+200, objExclamation) {
         image_angle = 180
         image_xscale = 0.5
         image_yscale = image_xscale
@@ -66,7 +66,7 @@ if t &gt; 80 {
     }
 }
 
-var thrustStartT = 230
+var thrustStartT = 240
 var thrustSpeed = 20
 
 if t == thrustStartT {
