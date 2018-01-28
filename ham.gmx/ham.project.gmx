@@ -66,7 +66,9 @@
     <sprite>sprites\sprPigBlink</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
+    <background>background\bg_menu</background>
+    <background>background\bg_credits</background>
+    <background>background\bg_howToPlay</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -115,9 +117,11 @@
     <object>objects\objExclamation</object>
     <object>objects\objHalfway</object>
     <object>objects\objTowerElectricity</object>
+    <object>objects\obj_tut</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
+    <room>rooms\rm_tut</room>
     <room>rooms\room0</room>
     <room>rooms\rm_credits</room>
   </rooms>
