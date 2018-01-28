@@ -52,11 +52,13 @@
   </views>
   <instances>
     <instance objName="objControlTemp" x="128" y="272" name="inst_95991AE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPickup" x="272" y="-736" name="inst_B779C051" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEarth" x="0" y="1024" name="inst_319590F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPig" x="208" y="800" name="inst_804879BE" locked="0" code="" scaleX="3" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objBackgroundColorFade" x="224" y="272" name="inst_34C37723" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objRadioTower" x="352" y="640" name="inst_4D90E168" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objRadioTower" x="407" y="634" name="inst_4D90E168" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPickup" x="288" y="-208" name="inst_48581D8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objDJTable" x="213" y="850" name="inst_56E42C39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objHAMRadio" x="291" y="815" name="inst_77BD8FE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -2,6 +2,8 @@
 
 // GML color picker: https://chrisanselmo.com/gmcolor/
 
+var softVolume = 0.5
+
 var w = instance_create(argument0, argument1, objWave);
 
 with w {
@@ -15,17 +17,32 @@ with w {
         
     case TRACK.DRUMS:
         color = 37887
-        sound = audio_play_sound(sndDrums, 1, true)
+        
+        if global.drumsAlt sound = audio_play_sound(sndDrumsAlternative, 1, true)
+        else sound = audio_play_sound(sndDrums, 1, true)
+        global.drumsAlt = not global.drumsAlt
+        
+        audio_sound_gain(sound, softVolume, 0)
         break
         
     case TRACK.GUITAR:
         color = c_lime
-        sound = audio_play_sound(sndGuitar, 1, true)
+        
+        if global.guitarAlt sound = audio_play_sound(sndGuitarAlternative, 1, true)
+        else sound = audio_play_sound(sndGuitar, 1, true)
+        global.guitarAlt = not global.guitarAlt
+        
+        audio_sound_gain(sound, softVolume, 0)
         break
         
     case TRACK.VOCALS:
         color = c_fuchsia
-        sound = audio_play_sound(sndVocals, 1, true)
+        
+        if global.vocalsAlt sound = audio_play_sound(sndVocalsAlternative, 1, true)
+        else sound = audio_play_sound(sndVocals, 1, true)
+        global.vocalsAlt = not global.vocalsAlt
+        
+        audio_sound_gain(sound, softVolume, 0)
         break
     
     }

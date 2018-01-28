@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>waves = ds_list_create()
 
-var w = scr_spawnWave(x, y, TRACK.BASS)
+var w = scr_spawnWave(x, y, TRACK.DRUMS)
 ds_list_add(waves, w)
 
-var w = scr_spawnWave(x, y, TRACK.DRUMS)
+var w = scr_spawnWave(x, y, TRACK.BASS)
 ds_list_add(waves, w)
 
 var w = scr_spawnWave(x, y, TRACK.GUITAR)
@@ -41,6 +41,12 @@ ds_list_add(waves, w)
 
 // List of tracks we lost in the order we lost them
 tracksLost = ds_list_create()
+
+// Add initial tracks in a random order.
+//ds_list_add(tracksLost, TRACK.DRUMS, TRACK.GUITAR, TRACK.VOCALS)
+//ds_list_shuffle(tracksLost)
+
+state = 0
 </string>
           </argument>
         </arguments>
@@ -86,31 +92,61 @@ tracksLost = ds_list_create()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Move onwards
-y -= 5
+            <string>// Player controled
+if state == 0 {
+    // Move onwards
+    y -= 5
+    
+    // Player moves up and down.
+    if keyboard_check(vk_left) {
+        x -= 8
+    } else if keyboard_check(vk_right) {
+        x += 8
+    }
+    
+    x = clamp(x, 45, room_width-45)
+    
+    // Switch wave order
+    if ds_list_size(waves) &gt; 0 {
+        if (keyboard_check_pressed(vk_space)) {
+            var w = waves[|0]
+            ds_list_delete(waves, 0)
+            ds_list_add(waves, w)
+        }
+    }
 
-// Player moves up and down.
-if keyboard_check(vk_left) {
-    x -= 8
-} else if keyboard_check(vk_right) {
-    x += 8
-}
+// Ending
+} else if state == 1 {
+    // Move onwards
+    y -= 5
 
-x = clamp(x, 45, room_width-45)
-
-// Switch wave order
-if ds_list_size(waves) &gt; 0 {
-    if (keyboard_check_pressed(vk_space)) {
-        var w = waves[|0]
-        ds_list_delete(waves, 0)
-        ds_list_add(waves, w)
+    // Move to target x position
+    var xTarget = objAlienRadioTower.x
+    var delta = 2
+    
+    if abs(x-xTarget) &lt; delta {
+        x = xTarget
+    } else {
+        if x &lt; xTarget {
+            x += delta
+        } else if x &gt; xTarget {
+            x -= delta
+        }
+    }
+    
+    if collision_point(x, y, objAlienRadioTower, false, false) {
+        for (var i=0; i&lt;ds_list_size(waves); i++) {
+            var w = waves[|i];
+            w.dead = true
+        }
+        instance_destroy()
+        instance_create(0, 0, objEndCutscene)
     }
 }
 
 // Move waves to their position relative to me.
 
 var n = ds_list_size(waves)
-//show_debug_message(n)
 for (var i=0; i&lt;n; i++) {
     var angle = 90 + i/n*360
     var r = 23

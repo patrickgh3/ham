@@ -46,6 +46,32 @@ disabled = false // disable spawning during god intermission
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn powerup
+alarm[5] = 60*10
+
+instance_create(room_width/2, view_yview[0] - 30, objPickup)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="4">
       <action>
         <libid>1</libid>
@@ -123,7 +149,7 @@ alarm[3]=6;
           <argument>
             <kind>1</kind>
             <string>if not disabled {
-    xSpawn=irandom_range(60,room_width-60);  
+    xSpawn=irandom_range(20,room_width-20);  
     colorNum=choose(0,1,2,3); 
     if (xSpawn&lt;room_width/2)
     {
@@ -136,10 +162,10 @@ alarm[3]=6;
     
     speedVtoSet=1;  
     
-    scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn,1); 
+    scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn,3); 
 }
 
-alarm[2]=20; 
+alarm[2]=40; 
 </string>
           </argument>
         </arguments>
@@ -169,12 +195,12 @@ alarm[2]=20;
 //implement reading an array of planned events 
 
 if not disabled {
-    xSpawn=irandom_range(60,room_width-60);  
+    xSpawn=irandom_range(20,room_width-20);  
     colorNum=choose(0,1,2,3); 
     speedHtoSet=0;
     speedVtoSet=1;  
     
-    scr_spawnObstacle(0,colorNum,speedHtoSet,speedVtoSet, xSpawn,3); 
+    scr_spawnObstacle(0,colorNum,speedHtoSet,speedVtoSet, xSpawn,1); 
 }
 
 alarm[1]=120;  

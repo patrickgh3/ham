@@ -48,6 +48,13 @@
     </sprites>
     <sprite>sprites\sprCloud</sprite>
     <sprite>sprites\sprMichelangeloGod</sprite>
+    <sprite>sprites\sprAlienSitting</sprite>
+    <sprite>sprites\sprAlienSurprised</sprite>
+    <sprite>sprites\spr1up</sprite>
+    <sprite>sprites\sprHAMRadio</sprite>
+    <sprite>sprites\sprDJTable</sprite>
+    <sprite>sprites\sprBirds</sprite>
+    <sprite>sprites\sprMoon</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -84,6 +91,12 @@
     </objects>
     <object>objects\objGod</object>
     <object>objects\objGodCloud</object>
+    <object>objects\objAlienRadioTower</object>
+    <object>objects\objHAMRadio</object>
+    <object>objects\objDJTable</object>
+    <object>objects\objMoon</object>
+    <object>objects\objAlien</object>
+    <object>objects\objEndCutscene</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

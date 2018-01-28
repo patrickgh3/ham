@@ -59,6 +59,10 @@ if instance_exists(objPlayer) {
     slideT = min(slideT+1, slideLength);
     
     view_yview[0] = scr_sineInterp(slideStartY, yTarget, slideT/slideLength)
+    
+    if instance_exists(objMoon) {
+        view_yview[0] = max(view_yview[0], objMoon.y)
+    }
 }
 </string>
           </argument>

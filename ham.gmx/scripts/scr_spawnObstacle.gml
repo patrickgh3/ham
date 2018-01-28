@@ -10,12 +10,15 @@ switch(setType)
 {
 case(0):
   {
-  newObst=instance_create(xLoc, ySpawn, objObstacleOne);   
+  newObst=instance_create(xLoc, ySpawn, objObstacleOne);
+  newObst.sprite_index = sprSatellite
   break; 
   } 
 case(1):
   {
-  newObst=instance_create(xLoc, ySpawn, objObstacleTwo);   
+  newObst=instance_create(xLoc, ySpawn, objObstacleTwo);
+  newObst.sprite_index = choose(sprAsteroid1, sprAsteroid2, sprAsteroid3)
+  newObst.image_speed = 0
   break; 
   } 
 }  
@@ -23,6 +26,6 @@ newObst.myHSpeed=setHSpeed;
 newObst.myVSpeed=setVSpeed; 
 newObst.myColor=setColor; 
 newObst.image_xscale=sizeAugment; 
-newObst.image_yscale=sizeAugment; 
-newObst.sprite_index = choose(sprAsteroid1, sprAsteroid2, sprAsteroid3)
-newObst.image_speed = 0
+newObst.image_yscale=sizeAugment;
+
+newObst.image_xscale *= choose(1, -1)

@@ -34,7 +34,7 @@
 
 type = TRACK.BASS // type of track - bass, drums, guitar, or vocals.
 color = c_aqua
-headOffset = 20
+headOffset = 0
 sound = -1
 
 // Record recent positions
@@ -49,6 +49,7 @@ recentI = 0
 joining = false
 
 dead = false
+deadT = 0
 </string>
           </argument>
         </arguments>
@@ -119,7 +120,8 @@ dead = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not joining and not dead {
+            <string>if not joining and not dead
+and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable collisions when in the ending
     // Collide with space junk
     
     var c = collision_circle(x, y-headOffset, 10, objObstParent, true, false)
@@ -176,6 +178,10 @@ dead = false
 
 if dead and y &gt; view_yview[0]+view_hview[0]+30 {
     instance_destroy()
+}
+
+if dead {
+    deadT++
 }
 
 // Record recent x positions
@@ -266,6 +272,7 @@ var xx = x
 var yy = y
 
 for (var i=0; i&lt;recentLength; i++) {
+
     var xx_last = xx;
     var yy_last = yy;
     
@@ -279,7 +286,7 @@ for (var i=0; i&lt;recentLength; i++) {
     //var ii = yy;
     //xx = 6*sin(ii/40*pi*2) + 4*sin(ii/17*pi*2+pi/2)
     
-    if i != 0 {
+    if i != 0 {//and not (dead and i &gt;= deadT) and yy &gt; yy_last {
         draw_line_width(xx_last, yy_last, xx, yy, 3)
     }
 }
