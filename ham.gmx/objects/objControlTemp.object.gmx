@@ -73,10 +73,11 @@ if t == 250 {
 if instance_exists(objPlayer) and objPlayer.state != 2 {
 
     // Add score based on time
+    
     if t &gt; 120 and t mod 60 == 0 {
         roundScore ++
     }
-
+    
     // Ending
     
     var endTime = 4000 // 6000
@@ -105,7 +106,7 @@ if instance_exists(objPlayer) and objPlayer.state != 2 {
         objSpawner.disabled = true
     }
     
-    if t == godTime+200 {
+    if t == godTime+230 {
         objSpawner.disabled = false
     }
     
@@ -181,7 +182,7 @@ if keyboard_check_pressed(vk_escape) {
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 draw_set_font(fontScore)
-draw_text(room_width/2, 64, roundScore); 
+draw_text(view_wview[0]/2, 64, roundScore); 
 </string>
           </argument>
         </arguments>

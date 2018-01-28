@@ -25,17 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*randomize()
+            <string>randomize()
 
-t = 0
+c = 0
+p = 0
 
-disabled = true*/
+disabled = true
+
+gap = choose(3, 4, 5);
+
+num1upsInARow = 0
+
+lastColor = -1
 
 
 
 
 //Alarm zero is the start time for generation
 alarm[0]=260; 
+
+/*
 
 //non important 
 y=0;
@@ -275,10 +284,10 @@ alarm[1]=40;
           <argument>
             <kind>1</kind>
             <string>//alarm[1] will be on  a 2 second interval.
-alarm[1]=120; 
+//alarm[1]=120; 
 
 //alarm[2] will be on a 0.33 second interval. 
-alarm[2]=20; 
+//alarm[2]=20; 
 
 //alarm[3] will be on a 0.10 second interval. 
 alarm[3]=6; 
@@ -287,13 +296,13 @@ alarm[3]=6;
 alarm[4]=8; 
 
 //alarm[5] spawns powerups
-alarm[5]=120; 
+//alarm[5]=120; 
 
 //alarm [6] will be on a 10 second interval.
-alarm[6]=600; 
+//alarm[6]=600; 
 
 //alarm[7] will be on a 12 second interval 
-alarm[7]=720; 
+//alarm[7]=720; 
 </string>
           </argument>
         </arguments>
@@ -316,17 +325,116 @@ alarm[7]=720;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if not disabled {
-    t++
-    
+            <string>if not disabled {
     var playerNeeds1ups = instance_exists(objPlayer)
             and objPlayer.state == 0
-            and ds_list_size(objPlayer.waves) &lt; 4
-    
-    
-}*/
+            and ds_list_size(objPlayer.waves) &lt; 4;
+    c ++
+    if c &gt; 30 {
+        c -= 30
+        
+        var toSpawn = 'spacejunk';
+        
+        p ++
+        if (p == gap) {
+            p = 0
+            gap = choose(3, 4, 5)
+            
+            toSpawn = 'not_chosen'
+            
+            if instance_exists(objPlayer)
+                    and objPlayer.state == 0 {
+                var numWaves = ds_list_size(objPlayer.waves) 
+                
+                if numWaves == 1
+                or (numWaves == 2 and random(1) &lt; 0.75 and num1upsInARow &lt;= 1) 
+                or (numWaves == 3 and random(1) &lt; 0.75 and num1upsInARow == 0) {
+                    toSpawn = '1up'
+                    num1upsInARow++
+                }
+            }
+            if toSpawn != '1up' {
+                toSpawn = 'asteroid'
+                num1upsInARow = 0
+            }
+        }
+        
+        if toSpawn == 'spacejunk' {
+            with instance_create(
+                    irandom_range(10, room_width-10),
+                    view_yview[0]-40,
+                    objSpaceJunk) {
+                if x &lt; room_width/2 {
+                    hspeed = random(1.5);
+                } else {
+                    hspeed = -random(1.5)
+                }
+                vspeed = random_range(0.75, 1.25)
+                
+                var cc = choose(1, 2, 3)
+                if cc == 1 {
+                    sprite_index = sprSatellite
+                    image_xscale = 0.5
+                } else if cc == 2 {
+                    sprite_index = sprSpaceship
+                    image_xscale = 1
+                } else if cc == 3 {
+                    sprite_index = sprGarbageCan
+                    image_xscale = 1
+                }
+                
+                image_yscale = image_xscale
+                image_xscale *= choose(1, -1)
+            }
+        
+        } else if toSpawn == 'asteroid' {
+            with instance_create(
+                    irandom_range(10,room_width-10),
+                    view_yview[0]-40,
+                    objAsteroidColor) {
+                if x &lt; room_width/2 {
+                    hspeed = random(1.5);
+                } else {
+                    hspeed = -random(1.5)
+                }
+                vspeed = random_range(0.75, 1.25)
+                
+                image_speed = 0
+                
+                if instance_exists(objPlayer) and ds_list_size(objPlayer.waves) &gt; 0 {
+                    // Only pick a color that the player has available.
+                    var i = irandom_range(0, ds_list_size(objPlayer.waves)-1)
+                    image_index = objPlayer.waves[|i].type
+                    
+                    // Don't pick the same color twice in a row (if we can help it).
+                    // If we did, then pick the next one in the list.
+                    if image_index == objSpawner.lastColor
+                            and ds_list_size(objPlayer.waves) &gt; 1 {
+                        i = (i+1) mod ds_list_size(objPlayer.waves)
+                        image_index = objPlayer.waves[|i].type
+                    }
+                    
+                    objSpawner.lastColor = image_index
+                } else {
+                    image_index = choose(0, 1, 2, 3)
+                }
+                
+                var s = choose(2, 3)
+                image_xscale = s*choose(1, -1)
+                image_yscale = s*choose(1, -1)
+            }
+        } else if toSpawn == '1up' {
+            with instance_create(
+                    random_range(100, room_width-100),
+                    view_yview[0] - 40,
+                    objPickup) {
+                vspeed = 1
+            }
+        }
+    }
+}
 
-ySpawn=view_yview[0];
+//ySpawn=view_yview[0];
 
 
 </string>

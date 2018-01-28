@@ -41,7 +41,6 @@
     <sprite>sprites\sprEarth</sprite>
     <sprite>sprites\sprSexyPig</sprite>
     <sprite>sprites\sprRadioTower</sprite>
-    <sprite>sprites\sprSatellite</sprite>
     <sprites name="menu">
       <sprite>sprites\spr_buttons</sprite>
       <sprite>sprites\spr_pointer</sprite>
@@ -62,7 +61,9 @@
     <sprite>sprites\sprExplosion</sprite>
     <sprite>sprites\sprPoof</sprite>
     <sprite>sprites\sprHalfway</sprite>
+    <sprite>sprites\sprSatellite</sprite>
     <sprite>sprites\sprSpaceship</sprite>
+    <sprite>sprites\sprGarbageCan</sprite>
     <sprite>sprites\sprTowerElectricity</sprite>
     <sprite>sprites\sprPigBlink</sprite>
     <sprite>sprites\sprAsteroidColor2</sprite>

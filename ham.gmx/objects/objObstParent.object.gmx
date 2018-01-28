@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//TODO obstacle stuffs 
 
-alarm[0]=1; 
+//alarm[0]=1; 
 alarm[1]=100; 
 
 hasPassed=false;
