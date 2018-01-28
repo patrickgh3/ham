@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>waves = ds_list_create()
+            <string>hasDied=false; 
+waves = ds_list_create()
 
 var w = scr_spawnWave(x, y, TRACK.VOCALS)
 ds_list_add(waves, w)
@@ -120,7 +121,7 @@ if state == 0 {
     }
 
 // Ending
-} else if state == 1 {
+}  if state == 1 {
     // Move onwards
     y -= 5
 
@@ -149,7 +150,12 @@ if state == 0 {
     
 // Dead from game over
 } else if state == 2 {
-    y -= 5
+    y -= 2;
+    if (hasDied==false)
+    {
+    instance_create(0,0,obj_restart);
+    hasDied=true;
+    } 
 }
 
 // Move waves to their position relative to me.

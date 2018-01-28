@@ -67,6 +67,7 @@
     <sprite>sprites\sprPigBlink</sprite>
     <sprite>sprites\sprAsteroidColor2</sprite>
     <sprite>sprites\sprMoon2</sprite>
+    <sprite>sprites\spr__restart</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_menu</background>
@@ -122,6 +123,7 @@
     <object>objects\objTowerElectricity</object>
     <object>objects\objPlayTitleMusic</object>
     <object>objects\obj_tut</object>
+    <object>objects\obj_restart</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>
