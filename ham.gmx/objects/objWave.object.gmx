@@ -26,10 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>enum TRACK {
-    BASS,
-    DRUMS,
-    GUITAR,
-    VOCALS,
+    BASS = 0,
+    DRUMS = 1,
+    GUITAR = 2,
+    VOCALS = 3,
 }
 
 type = TRACK.BASS // type of track - bass, drums, guitar, or vocals.
@@ -129,12 +129,13 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
         dead = true
         audio_stop_sound(sound)
         
-        //if types match {
-        //    var s = instance_create(x, y, objPlusScore);
-        //    s.text = "+50"
-        //    s.vspeed = -2
-        //    objControlTemp.roundScore += 50;
-        //}
+        if c.object_index == objAsteroidColor and c.image_index == id.type {
+            objControlTemp.roundScore += 50;
+            
+            var s = instance_create(c.x, c.y, objPlusScore);
+            s.text = "+50"
+            s.vspeed = -5
+        }
         
         with c {
             instance_create(x, y, objExplosion)
@@ -163,6 +164,9 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
             if ds_list_size(waves) == 0 {
                 audio_play_sound(sndGameOverSqueal, 0.5, false)
                 //instance_destroy()
+                objPlayer.state = 2
+                var s = audio_play_sound(sndSpace, 1, false)
+                audio_sound_gain(s, 1, 1500)
             }
         }
     }

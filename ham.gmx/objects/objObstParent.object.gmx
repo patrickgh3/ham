@@ -77,11 +77,11 @@ canCease=false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed=myHSpeed; 
-vspeed=myVSpeed;  
+            <string>//hspeed=myHSpeed; 
+//vspeed=myVSpeed;  
 
-image_speed=0; 
-image_index=myColor;  
+//image_speed=0; 
+//image_index=myColor;  
 
 
 </string>
@@ -108,10 +108,10 @@ image_index=myColor;
             <kind>1</kind>
             <string>if (canCease==true)
 {
-if (global.isAlive==true)
-{
-    objControlTemp.roundScore += 1; 
-}
+//if (global.isAlive==true)
+//{
+    //objControlTemp.roundScore += 1; 
+//}
 instance_destroy(); 
 }
 </string>

@@ -23,6 +23,7 @@
       <sound>sound\sndPressAnyKey</sound>
       <sound>sound\sndSignalLaunch</sound>
       <sound>sound\sndSignalLaunch2</sound>
+      <sound>sound\sndRotation</sound>
     </sounds>
     <sound>sound\sndTitleScreen</sound>
   </sounds>
@@ -64,6 +65,7 @@
     <sprite>sprites\sprSpaceship</sprite>
     <sprite>sprites\sprTowerElectricity</sprite>
     <sprite>sprites\sprPigBlink</sprite>
+    <sprite>sprites\sprAsteroidColor2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -85,7 +87,7 @@
     <object>objects\objTempJunk</object>
     <object>objects\objSpawner</object>
     <object>objects\objObstParent</object>
-    <object>objects\objAsteroid</object>
+    <object>objects\objAsteroidColor</object>
     <object>objects\objSpaceJunk</object>
     <object>objects\objControlTemp</object>
     <object>objects\objEndCutscene</object>
