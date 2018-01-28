@@ -176,7 +176,6 @@ dead = false
 
 if dead and y &gt; view_yview[0]+view_hview[0]+30 {
     instance_destroy()
-    show_debug_message('destroying dead wave')
 }
 
 // Record recent x positions

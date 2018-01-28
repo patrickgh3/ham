@@ -46,6 +46,8 @@
       <sprite>sprites\spr_pointer</sprite>
       <sprite>sprites\spr_title</sprite>
     </sprites>
+    <sprite>sprites\sprCloud</sprite>
+    <sprite>sprites\sprMichelangeloGod</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -80,6 +82,8 @@
       <object>objects\obj_pointer</object>
       <object>objects\obj_button</object>
     </objects>
+    <object>objects\objGod</object>
+    <object>objects\objGodCloud</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_menu</room>

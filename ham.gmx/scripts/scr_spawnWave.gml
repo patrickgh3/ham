@@ -3,7 +3,6 @@
 // GML color picker: https://chrisanselmo.com/gmcolor/
 
 var w = instance_create(argument0, argument1, objWave);
-show_debug_message(instance_number(objWave))
 
 with w {
     type = argument2

@@ -30,6 +30,8 @@ t = 0 // step counter, increments by 1 every step
 roundScore=0 // round score counter. 
 
 global.isAlive=true; 
+
+god = false
 </string>
           </argument>
         </arguments>
@@ -64,6 +66,47 @@ if t == 120 {
 
 if t == 150 {
     instance_create(0, 0, objCamera)
+}
+
+// God intermission
+
+var godTime = 600
+
+if t == godTime {
+    objSpawner.disabled = true
+}
+
+if t == godTime+200 {
+    objSpawner.disabled = false
+}
+
+if t == godTime-20 {
+    instance_create(room_width, view_yview[0]-500, objGod)
+    
+    // Spawn clouds
+    var n = 50
+    for (var i=0; i&lt;n; i++) {
+    
+        // X is random
+        var xx = random_range(-50, room_width+50)
+        // Y increases linearly
+        var yy = view_yview[0]-500 + lerp(-400, 400, i/n)
+        
+        var scale = choose(2,3)
+        // larger clouds toward the middle
+        if i &gt; 10 and i &lt; n-10 {
+            scale *= 2
+        }
+        
+        with instance_create(xx, yy, objGodCloud) {
+            image_xscale = scale*choose(1, -1)
+            image_yscale = scale
+            
+            hspeed = random_range(-1, 1)
+            
+            image_alpha = random_range(0.8, 1)
+        }
+    }
 }
 
 // temp restart game
