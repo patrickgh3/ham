@@ -29,8 +29,6 @@
 t = 0 // step counter, increments by 1 every step
 roundScore=0 // round score counter. 
 
-global.isAlive=true; 
-
 god = false
 </string>
           </argument>
@@ -68,74 +66,84 @@ if t == 130 {
     instance_create(0, 0, objCamera)
 }
 
-// Ending
+if instance_exists(objPlayer) and objPlayer.state != 2 {
 
-var endTime = 6000 // 6000
+    // Add score based on time
+    if t &gt; 120 and t mod 60 == 0 {
+        roundScore ++
+    }
 
-if t == endTime {
-    objSpawner.disabled = true
-}
-
-if t == endTime+180 {
-    objPlayer.state = 1
+    // Ending
     
-    instance_create(room_width/2+80, view_yview[0] - 1000, objAlienRadioTower)
+    var endTime = 4000 // 6000
     
-    var m = instance_create(0, view_yview[0] - 1500, objMoon);
-    m.image_yscale = -1
-    
-    var a = instance_create(150, view_yview[0] - 1300, objAlien);
-    a.image_angle = 180
-}
-
-// God intermission
-
-var godTime = 3000 // 3000
-
-if t == godTime {
-    objSpawner.disabled = true
-}
-
-if t == godTime+200 {
-    objSpawner.disabled = false
-}
-
-if t == godTime-20 {
-    instance_create(room_width, view_yview[0]-500, objGod)
-    
-    with instance_create(room_width/2-50, view_yview[0]-550, objHalfway) {
-        image_xscale = 2
-        image_yscale = image_xscale
+    if t == endTime {
+        objSpawner.disabled = true
     }
     
-    // Spawn clouds
-    var n = 50
-    for (var i=0; i&lt;n; i++) {
-    
-        // X is random
-        var xx = random_range(-50, room_width+50)
-        // Y increases linearly
-        var yy = view_yview[0]-500 + lerp(-400, 400, i/n)
+    if t == endTime+80 {
+        objPlayer.state = 1
         
-        var scale = choose(2,3)
-        // larger clouds toward the middle
-        if i &gt; 10 and i &lt; n-10 {
-            scale *= 2
+        instance_create(room_width/2+80, view_yview[0] - 1000, objAlienRadioTower)
+        
+        var m = instance_create(0, view_yview[0] - 1500, objMoon);
+        m.image_yscale = -1
+        
+        var a = instance_create(150, view_yview[0] - 1300, objAlien);
+        a.image_angle = 180
+    }
+
+    // God intermission
+    
+    var godTime = 2000 // 3000
+    
+    if t == godTime-30 {
+        objSpawner.disabled = true
+    }
+    
+    if t == godTime+200 {
+        objSpawner.disabled = false
+    }
+    
+    if t == godTime-20 {
+        instance_create(room_width, view_yview[0]-500, objGod)
+        
+        with instance_create(room_width/2-50, view_yview[0]-550, objHalfway) {
+            image_xscale = 2
+            image_yscale = image_xscale
         }
         
-        with instance_create(xx, yy, objGodCloud) {
-            image_xscale = scale*choose(1, -1)
-            image_yscale = scale
+        // Spawn clouds
+        var n = 50
+        for (var i=0; i&lt;n; i++) {
+        
+            // X is random
+            var xx = random_range(-50, room_width+50)
+            // Y increases linearly
+            var yy = view_yview[0]-500 + lerp(-400, 400, i/n)
             
-            hspeed = random_range(-1, 1)
+            var scale = choose(2,3)
+            // larger clouds toward the middle
+            if i &gt; 10 and i &lt; n-10 {
+                scale *= 2
+            }
             
-            image_alpha = random_range(0.8, 1)
+            with instance_create(xx, yy, objGodCloud) {
+                image_xscale = scale*choose(1, -1)
+                image_yscale = scale
+                
+                hspeed = random_range(-1, 1)
+                
+                image_alpha = random_range(0.8, 1)
+            }
         }
     }
+
 }
 
 // temp restart game
 if keyboard_check_pressed(ord('R')) {
+    audio_stop_sound(sndSpace)
     room_goto(room)
 }
 

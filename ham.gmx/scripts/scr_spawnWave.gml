@@ -16,7 +16,7 @@ with w {
         break
         
     case TRACK.DRUMS:
-        color = 37887
+        color = 37887 // orange. to see exact color, just take a screenshot of it in-game, heh
         
         if global.drumsAlt sound = audio_play_sound(sndDrumsAlternative, 1, true)
         else sound = audio_play_sound(sndDrums, 1, true)
@@ -49,13 +49,15 @@ with w {
     
     // Sync up this sound's position with another already existing wave.
     // (unless we're the first ever spawned wave, then we just start at the beginning)
-    for (var i=0; i<instance_number(objWave); i++) {
-        var otherWave = instance_find(objWave, i)
-        
-        if otherWave.id != id {
-            audio_sound_set_track_position(sound,
-                    audio_sound_get_track_position(otherWave.sound))
-            break
+    if instance_number(objWave) > 1 {
+        for (var i=0; i<instance_number(objWave); i++) {
+            var otherWave = instance_find(objWave, i)
+            
+            if otherWave.id != id and not otherWave.dead {
+                audio_sound_set_track_position(sound,
+                        audio_sound_get_track_position(otherWave.sound))
+                break
+            }
         }
     }
 }

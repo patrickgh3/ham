@@ -57,6 +57,11 @@ if t &gt; 60 {
     }
 }*/
 
+t++
+if t &gt;= 60 {
+    instance_destroy()
+}
+
 if y &gt; view_yview[0] + view_hview[0] + 80 {
     instance_destroy()
 }

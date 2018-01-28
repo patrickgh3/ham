@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>waves = ds_list_create()
 
+var w = scr_spawnWave(x, y, TRACK.VOCALS)
+ds_list_add(waves, w)
+
 var w = scr_spawnWave(x, y, TRACK.DRUMS)
 ds_list_add(waves, w)
 
@@ -36,9 +39,6 @@ ds_list_add(waves, w)
 var w = scr_spawnWave(x, y, TRACK.GUITAR)
 ds_list_add(waves, w)
 
-var w = scr_spawnWave(x, y, TRACK.VOCALS)
-ds_list_add(waves, w)
-
 // List of tracks we lost in the order we lost them
 tracksLost = ds_list_create()
 
@@ -46,6 +46,9 @@ tracksLost = ds_list_create()
 //ds_list_add(tracksLost, TRACK.DRUMS, TRACK.GUITAR, TRACK.VOCALS)
 //ds_list_shuffle(tracksLost)
 
+// 0 - playing (normal)
+// 1 - frozen for ending cutscene
+// 2 - dead from game over
 state = 0
 </string>
           </argument>
@@ -98,17 +101,18 @@ if state == 0 {
     y -= 5
     
     // Player moves up and down.
-    if keyboard_check(vk_left) {
+    if keyboard_check(vk_left) or keyboard_check(ord('A')) {
         x -= 8
-    } else if keyboard_check(vk_right) {
+    } else if keyboard_check(vk_right) or keyboard_check(ord('D')) {
         x += 8
     }
     
-    x = clamp(x, 45, room_width-45)
+    x = clamp(x, 40, room_width-40)
     
     // Switch wave order
-    if ds_list_size(waves) &gt; 0 {
+    if ds_list_size(waves) &gt; 1 {
         if (keyboard_check_pressed(vk_space)) {
+            audio_play_sound(sndRotation, 0.5, false)
             var w = waves[|0]
             ds_list_delete(waves, 0)
             ds_list_add(waves, w)
@@ -142,6 +146,10 @@ if state == 0 {
         instance_destroy()
         instance_create(0, 0, objEndCutscene)
     }
+    
+// Dead from game over
+} else if state == 2 {
+    y -= 5
 }
 
 // Move waves to their position relative to me.

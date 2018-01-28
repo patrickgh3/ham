@@ -64,9 +64,14 @@ disabled = false // disable spawning during god intermission
           <argument>
             <kind>1</kind>
             <string>/// Spawn powerup
-alarm[5] = 60*10
+if not disabled
+and instance_exists(objPlayer)
+and objPlayer.state == 0
+and ds_list_size(objPlayer.waves) != 4 {
+    instance_create(random_range(100, room_width-100), view_yview[0] - 30, objPickup)
+}
 
-instance_create(room_width/2, view_yview[0] - 30, objPickup)
+alarm[5] = 120
 </string>
           </argument>
         </arguments>
@@ -154,30 +159,33 @@ if not disabled {
     xSpawn=irandom_range(20,room_width-20);  
     var colorNum=choose(0,1,2,3); 
     if (xSpawn&lt;room_width/2) {
-        var speedHtoSet=1;
+        var speedHtoSet=random(1);
     } else {
-        var speedHtoSet=-1;
-    } 
+        var speedHtoSet=-random(1);
+    }  
     
-    var speedVtoSet=1;  
-    
-    with instance_create(xSpawn, view_yview[0]-32, objAsteroid) {
-        myHSpeed = speedHtoSet
-        myVSpeed = speedVtoSet
+    with instance_create(xSpawn, view_yview[0]-32, objAsteroidColor) {
+        hspeed = speedHtoSet
+        vspeed = 1
         
-        sprite_index = choose(sprAsteroid1, sprAsteroid2, sprAsteroid3)
         image_speed = 0
         
-        image_xscale = 3
-        image_yscale = image_xscale
-        image_xscale *= choose(1, -1)
+        if instance_exists(objPlayer) and ds_list_size(objPlayer.waves) &gt; 0 {
+            // Only pick color that the player has available.
+            var i = irandom_range(0, ds_list_size(objPlayer.waves)-1)
+            image_index = objPlayer.waves[|i].type
+        } else {
+            image_index = choose(0, 1, 2, 3)
+        }
         
-        myColor = colorNum
+        var s = choose(2, 3)
+        image_xscale = s*choose(1, -1)
+        image_yscale = s*choose(1, -1)
     }
     //scr_spawnObstacle(1,colorNum,speedHtoSet,speedVtoSet, xSpawn,3); 
 }
 
-alarm[2]=100; 
+alarm[2]=150;
 </string>
           </argument>
         </arguments>
@@ -270,7 +278,7 @@ alarm[3]=6;
 alarm[4]=8; 
 
 //alarm[5] spawns powerups
-alarm[5]=480; 
+alarm[5]=120; 
 
 //alarm [6] will be on a 10 second interval.
 alarm[6]=600; 
