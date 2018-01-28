@@ -32,6 +32,7 @@ y1=576;
 
 x=5;  
 y=y0;
+enabled=true; 
 
 global.drumsAlt = false
 global.guitarAlt = false
