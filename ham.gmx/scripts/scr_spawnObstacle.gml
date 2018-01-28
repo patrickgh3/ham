@@ -25,4 +25,5 @@ newObst.myColor=setColor;
 newObst.image_xscale=sizeAugment; 
 newObst.image_yscale=sizeAugment; 
 newObst.sprite_index = choose(sprAsteroid1, sprAsteroid2, sprAsteroid3)
+newObst.image_index= choose(0,1,2,3); 
 newObst.image_speed = 0
