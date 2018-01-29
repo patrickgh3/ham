@@ -169,6 +169,7 @@ if state == 0 {
         }
         instance_destroy()
         instance_create(0, 0, objEndCutscene)
+        global.highScore = max(global.highScore, objControlTemp.roundScore)
     }
     
 // Dead from game over

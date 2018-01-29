@@ -166,6 +166,8 @@ and not (instance_exists(objPlayer) and objPlayer.state == 1) { // disable colli
                 //instance_destroy()
                 objPlayer.state = 2
                 objPlayer.alarm[0] = 60 // play space sound
+                
+                global.highScore = max(global.highScore, objControlTemp.roundScore)
             }
         }
     }

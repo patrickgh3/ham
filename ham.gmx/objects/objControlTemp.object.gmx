@@ -154,10 +154,9 @@ if instance_exists(objPlayer) and objPlayer.state != 2 {
     room_goto(room)
 }*/
 
-// temp exit game
-/*if keyboard_check_pressed(vk_escape) {
-    game_end()
-}*/
+if keyboard_check_pressed(vk_escape) {
+    room_goto(rm_menu)
+}
 </string>
           </argument>
         </arguments>
@@ -212,10 +211,14 @@ draw_set_font(fontScore)
 if instance_exists(objPlayer) and ds_list_size(objPlayer.waves) == 0 {
     draw_text( view_wview[0]/2, view_hview[0]/2,
             "Score: " + string(roundScore));
+    draw_text( view_wview[0]/2, view_hview[0]*0.6,
+            "High score: " + string(global.highScore))
 // end of the game
 } else if showEndScore {
-    draw_text( view_wview[0]/2, view_hview[0]/3,
+    draw_text( view_wview[0]/2, view_hview[0]*0.33,
             "Score: " + string(roundScore));
+    draw_text( view_wview[0]/2, view_hview[0]*0.45,
+            "High score: " + string(global.highScore))
 
 // normal alive    
 } else {
